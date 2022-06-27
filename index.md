@@ -1,6 +1,12 @@
 ## ABOUT ME
 
-Hello! I’m a rising senior majoring in Computer Science in Marshall college
+Joyce Weng
+Computer Science (B.S.) || Thurgood Marshall College
+University of California San Diego
+
+### Hello
+
+I’m a rising senior majoring in Computer Science in Marshall college
 
 ### CONTACT
 
