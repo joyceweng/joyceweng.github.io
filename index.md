@@ -8,4 +8,4 @@ My email is jweng@ucsd.edu
 
 ### RESUME
 
-Here is [My resume](https://www.flipsnack.com/9657EE77C6F/resume-1.html) for more details
+Here is [My resume](https://drive.google.com/file/d/1nJnx2Z3GePuTHJ27kmMaNikDhUwZE5eY/view?usp=sharing) for more details
