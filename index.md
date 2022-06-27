@@ -5,6 +5,7 @@ Hello! I’m a rising senior majoring in Computer Science in Marshall college
 ### CONTACT
 
 My email is [jweng@ucsd.edu](jweng@ucsd.edu)
+
 Feel free to contact me.
 
 ### RESUME
