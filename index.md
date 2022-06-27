@@ -1,8 +1,10 @@
 ## ABOUT ME
 
-Computer Science (B.S.) || Thurgood Marshall College
+-Computer Science (B.S.)
 
-University of California San Diego
+-Thurgood Marshall College
+
+-University of California San Diego
 
 ### HELLO
 
