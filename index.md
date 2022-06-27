@@ -1,7 +1,7 @@
 ## ABOUT ME
 
-Joyce Weng
 Computer Science (B.S.) || Thurgood Marshall College
+
 University of California San Diego
 
 ### HELLO
