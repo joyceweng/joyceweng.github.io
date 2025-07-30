@@ -1,0 +1,222 @@
+/* ========== Theme & Base ========== */
+:root{
+    --tiffany:#81D8D0;
+    --tiffany-dark:#5bb9b2;
+    --ink:#24313f;
+    --glass: rgba(255,255,255,.55);
+    --shadow: 0 10px 40px rgba(0,0,0,.18);
+  }
+  *{ box-sizing: border-box; }
+  html,body{ height:100%; }
+  body{
+    margin:0;
+    color:var(--ink);
+    -webkit-font-smoothing: antialiased;
+    font-family:"Quicksand","Noto Sans TC",system-ui,-apple-system,sans-serif;
+    background:
+      radial-gradient(1000px 600px at 10% -10%, rgba(255,255,255,.8), transparent 60%),
+      radial-gradient(1200px 800px at 120% 10%, rgba(255,255,255,.8), transparent 60%),
+      linear-gradient(135deg, var(--tiffany), #c6f3ef 60%, #fdfefe);
+    overflow-x:hidden;
+  }
+  
+  /* selection helpers (Safari) */
+  .no-select{ -webkit-user-select:none; user-select:none; }
+  
+  /* ========== Glass Card (Safari support) ========== */
+  .glass{
+    background: var(--glass);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,.5);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+  }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass{ background: rgba(255,255,255,.82); }
+  }
+  
+  /* ========== Layout ========== */
+  .container{ max-width:980px; margin:0 auto; padding:20px; }
+  
+  .hero{
+    padding:24px 16px;
+    margin-top:16px;
+    position:relative;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .title{
+    margin:8px 0 0;
+    color:#0b4d4a;
+    text-shadow:0 2px 0 rgba(255,255,255,.6);
+    text-align:center;
+  }
+  .subtitle{
+    margin:8px auto 4px;
+    max-width:34ch;
+    display:inline-block;
+    text-align:center;
+  }
+  
+  /* Typewriter caret */
+  .typewriter{
+    white-space: normal;
+    overflow: hidden;
+    border-right: 2px solid #0b4d4a;
+    animation: caret .9s steps(1) infinite;
+  }
+  @keyframes caret{ 50%{ border-color: transparent; } }
+  
+  .stage{ display:grid; place-items:center; margin:6px 0; }
+  .sloth-svg{
+    width:min(520px, 90vw);
+    display:block;
+    margin:6px auto; /* ensure SVG itself is centered */
+  }
+  .hint{ margin:10px 0 8px; opacity:.9; }
+  
+  /* ========== Overlay + Countdown ========== */
+  .overlay{
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: rgba(0,0,0,.5);
+    z-index: 1000;
+  }
+  .overlay-card{
+    width: min(520px, 92vw);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Countdown above card; ignore pointer events */
+  .countdown{
+    position: absolute;
+    inset: 0;
+    display: grid; place-items: center;
+    pointer-events: none;
+    opacity: 0; transition: opacity .12s;
+    z-index: 2;
+  }
+  .countdown.show{ opacity: 1; }
+  .countdown .num{
+    color:#fff; font-weight:800; font-size:22vmin; letter-spacing:.05em;
+    text-shadow:0 8px 20px rgba(0,0,0,.6);
+    animation: pop .5s ease;
+  }
+  @keyframes pop{
+    0%{ transform:scale(.6); opacity:.2 }
+    60%{ transform:scale(1.1) }
+    100%{ transform:scale(1); opacity:1 }
+  }
+  
+  /* ========== Gift (SVG) ========== */
+  .gift-svg{ width:160px; height:auto; cursor:pointer;
+    -webkit-user-select:none;user-select:none; 
+    filter: drop-shadow(0 10px 22px rgba(0,0,0,.15));
+  }
+  .gift-svg:focus{ outline:none; }
+  .gift-svg #lid{
+    transform-origin: center bottom;   /* 讓翻蓋以底邊為軸，Safari 也穩 */
+    transform-box: fill-box;
+    transition: transform .45s cubic-bezier(.2,.8,.2,1);
+  }
+  .gift-svg.open #lid{ transform: rotateX(70deg) translateY(-6px); }
+  .gift-svg #shine{ transition: opacity .3s; }
+  .gift-svg.open #shine{ opacity:1; }
+  
+  /* If you still have DIV gift, keep same footprint */
+  .gift{ position:relative; width:160px; height:140px; margin:8px auto; cursor:pointer;
+    -webkit-user-select:none; user-select:none; }
+  
+  /* ========== Popup ========== */
+  .popup{
+    display:none;
+    position:fixed; inset:0;
+    padding:14px;
+    background: rgba(0,0,0,.45);
+  }
+  .popup-content{
+    max-width:540px;
+    margin:8% auto 0;
+    padding:20px 22px;
+    position:relative;
+    text-align:left;
+  }
+  .close{
+    position:absolute; top:10px; right:12px;
+    border:0; background:transparent; color:#0b4d4a;
+    font-size:28px; cursor:pointer;
+    -webkit-user-select:none; user-select:none; 
+  }
+  .traits{ margin:10px 0 12px 18px; }
+  .traits li{ margin:4px 0; }
+  
+  /* ========== Buttons ========== */
+  .btn{
+    appearance:none;
+    border:0; border-radius:14px;
+    padding:10px 16px;
+    background: linear-gradient(180deg,#eaffff,#d6ffff);
+    box-shadow: 0 6px 0 var(--tiffany-dark), 0 12px 22px rgba(0,0,0,.15);
+    color:#0b4d4a; font-weight:700; cursor:pointer;
+    transition: transform .1s;
+    touch-action: manipulation;
+    -webkit-user-select:none; user-select:none; 
+  }
+  .btn:active{ transform: translateY(2px); }
+  .btn.secondary{
+    background: linear-gradient(180deg,#fff,#f7ffff);
+    box-shadow: 0 6px 0 #bcd7d4, 0 12px 22px rgba(0,0,0,.12);
+  }
+  .cta{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:10px; }
+  
+  .tip{ opacity:.85; }
+  
+  /* ========== Floating bubbles bg ========== */
+  .bubbles::before,
+  .bubbles::after{
+    content:"";
+    position:fixed; inset:0;
+    pointer-events:none;
+    background:
+      radial-gradient(12px 12px at 10% 20%, rgba(255,255,255,.6), transparent 60%),
+      radial-gradient(18px 18px at 80% 30%, rgba(255,255,255,.5), transparent 60%),
+      radial-gradient(10px 10px at 30% 80%, rgba(255,255,255,.55), transparent 60%),
+      radial-gradient(14px 14px at 70% 70%, rgba(255,255,255,.5), transparent 60%);
+    animation: floaty 18s linear infinite;
+  }
+  .bubbles::after{ animation-duration:26s; opacity:.6; filter: blur(2px); }
+  @keyframes floaty{
+    from{ transform: translateY(10px); }
+    to  { transform: translateY(-20px); }
+  }
+  
+  /* ========== Sloth / Candle animations ========== */
+  @keyframes blink { 0%,92%,100%{ transform:scaleY(1) } 95%{ transform:scaleY(.1) } }
+  #eyeL,#eyeR{ transform-origin:center; animation: blink 5.2s infinite; }
+  
+  @keyframes cheek { 0%,60%,100%{ transform:scale(1) } 30%{ transform:scale(1.18) } }
+  #cheekL,#cheekR{ transform-origin:center; animation: cheek 3.2s ease-in-out infinite; }
+  
+  @keyframes flicker{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-2px) } }
+  #flame{ animation: flicker .25s infinite ease-in-out; }
+  
+  /* blow/relight controlled by JS via classes on #slothSVG */
+  @keyframes puffOut{ from{opacity:0; transform:translateX(0)} to{opacity:1; transform:translateX(22px)} }
+  .blow #puff{ animation:puffOut .7s ease-out; opacity:0; }
+  .blow #flame{ animation:none; transform-origin:center; transform:scale(.1); opacity:0; transition:transform .2s, opacity .2s; }
+  .relight #flame{ opacity:1; transform:scale(1); animation:flicker .25s infinite; }
+  
+  /* ========== Responsive ========== */
+  @media (max-width:480px){
+    .subtitle{ max-width:92vw; }
+    .popup-content{ margin-top:18%; }
+  }
+  
